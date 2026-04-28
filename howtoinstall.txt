@@ -1,0 +1,7 @@
+# Clone the repo
+git clone https://github.com/Kobeee4/AI-better-than-SQL-
+
+# Enter the folder
+cd AI-better-than-SQL-
+                                                      # Run it
+python main.py

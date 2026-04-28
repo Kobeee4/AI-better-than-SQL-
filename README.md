@@ -1,4 +1,5 @@
-# SHADOW
+# SHADOW 
+#ai #sql #breach
 **Raw Byte-Level Database Discovery & Stealth Request Engine**
 
 SHADOW is a high-performance Python module built for deep-system reconnaissance and secure data retrieval. It operates below the level of standard SQL drivers and browser fingerprints, utilizing raw socket communication and byte-signature analysis to locate and extract data.

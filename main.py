@@ -14,7 +14,7 @@ def banner():
   ██████╔╝██║  ██║██║  ██║██████╔╝╚██████╔╝╚███╔███╔╝
   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚══╝╚══╝ {W}
     """)
-    print(f" {G}v3.1{W} | {G}3,150+ targets loaded{W}")
+    print(f" {G}v1{W} | {G}3,150+ targets loaded{W}")
     print(f" status: {G}bypass_active{W}\n")
 
 def main():

@@ -21,10 +21,12 @@ class Shadow:
         R, W, Y = '\033[31m', '\033[0m', '\033[33m'
         print(f"{R}SHADOW{W}\n" + "-"*30 + f"\nsid: {self.sid}\n" + "-"*30)
         print(f"{R}you agree to not use this for any bad use{W}\n")
-        print("\nthis module is for authorized testing only.") 
-         print("misuse is the sole responsibility of the user.") 
-c = input(f"proceed? ({Y}yes{W}/{R}no{W}): ").lower().strip()
-        if c != 'yes': sys.exit()
+        print("this module is for authorized testing only.") 
+        print("misuse is the sole responsibility of the user.") 
+        
+        c = input(f"\nproceed? ({Y}yes{W}/{R}no{W}): ").lower().strip()
+        if c != 'yes': 
+            sys.exit()
         os.system('clear')
 
     def request(self, url, method="GET", data=None):
@@ -59,7 +61,8 @@ c = input(f"proceed? ({Y}yes{W}/{R}no{W}): ").lower().strip()
                     if b"CF-RAY" in res or b"cloudflare" in res.lower():
                         return self.solve_cf(res, url)
                     return res
-        except: return b"error"
+        except: 
+            return b"error"
 
     def solve_cf(self, res, url):
         html = res.decode(errors='ignore')
@@ -74,7 +77,8 @@ c = input(f"proceed? ({Y}yes{W}/{R}no{W}): ").lower().strip()
             d = raw.decode(errors='ignore')
             m = re.findall(r'(\d+[\+\-\*]\d+)', d)
             if m: return str(eval(m[0]))
-        except: pass
+        except: 
+            pass
         return "0"
 
     def breach(self, path):
@@ -82,16 +86,20 @@ c = input(f"proceed? ({Y}yes{W}/{R}no{W}): ").lower().strip()
         if not os.path.exists(path): return hits
         for root, dirs, files in os.walk(path):
             for f in files:
-                if f in self.t: hits.append(os.path.join(root, f))
+                if f in self.t: 
+                    hits.append(os.path.join(root, f))
                 else:
                     fp = os.path.join(root, f)
                     try:
                         if os.path.getsize(fp) < 5000000:
                             with open(fp, 'rb') as x:
                                 h = x.read(512)
-                                if any(s in h for s in [b"SQLite", b"SQL", b"PK\x03\x04"]): hits.append(fp)
-                    except: pass
+                                if any(s in h for s in [b"SQLite", b"SQL", b"PK\x03\x04"]): 
+                                    hits.append(fp)
+                    except: 
+                        pass
         return hits
 
     def log(self, msg):
-        with open(self.gp, 'a') as f: f.write(f"[{time.ctime()}] {msg}\n")
+        with open(self.gp, 'a') as f: 
+            f.write(f"[{time.ctime()}] {msg}\n")

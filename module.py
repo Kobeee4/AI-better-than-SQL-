@@ -21,7 +21,9 @@ class Shadow:
         R, W, Y = '\033[31m', '\033[0m', '\033[33m'
         print(f"{R}SHADOW{W}\n" + "-"*30 + f"\nsid: {self.sid}\n" + "-"*30)
         print(f"{R}you agree to not use this for any bad use{W}\n")
-        c = input(f"proceed? ({Y}yes{W}/{R}no{W}): ").lower().strip()
+        print("\nthis module is for authorized testing only.") 
+         print("misuse is the sole responsibility of the user.") 
+c = input(f"proceed? ({Y}yes{W}/{R}no{W}): ").lower().strip()
         if c != 'yes': sys.exit()
         os.system('clear')
 

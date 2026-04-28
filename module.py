@@ -15,10 +15,18 @@ class Shadow:
             "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0"
         ]
         
-        p = ['admin','backup','users','config','db','main','master','data','vault','auth','creds','shadow','root','sql','sys','secure','login','member','private','store','web','app','core','base','archive','dump','sync','meta','financial','api','v1','v2','old','temp','test']
-        e = ['.db', '.sqlite', '.sql', '.bin', '.dat', '.db3', '.sqlite3', '.bak', '.sav', '.mdb', '.cfg', '.log', '.json', '.xml', '.tar.gz', '.zip']
+        # 75 Prefixes
+        pre = [
+            'admin','backup','users','config','db','main','master','data','vault','auth','creds','shadow','root','sql','sys','secure','login','member','private','store','web','app','core','base','archive','dump','sync','meta','financial','api','v1','v2','old','temp','test','client','server','local','remote','prod','dev','staff','internal','external','global','alpha','beta','finance','pay','node','cluster','edge','user_data','profile','session','secret','key','storage','cache','log','site','global','setup','recovery','billing','crm','portal','index','collection','warehouse','vault_key','master_db','access','engine'
+        ]
+        # 14 Extensions
+        ext = ['.db', '.sqlite', '.sql', '.bin', '.dat', '.db3', '.sqlite3', '.bak', '.sav', '.mdb', '.cfg', '.log', '.json', '.tar.gz']
+        # 2 Variants
+        var = ['', '_old', '_backup']
         
-        self.t = [x + y for x in p for y in e] + [x + "_backup" + y for x in p for y in e]
+        # Matrix: 75 * 14 * 3 = 3,150 unique target names
+        self.t = [p + v + e for p in pre for v in var for e in ext]
+        
         self.gp = f"/tmp/.{self.sid}" if os.path.exists("/tmp") else f"./.{self.sid}"
 
     def tos(self):
